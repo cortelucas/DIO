@@ -9,9 +9,9 @@ Repositório para armazenar resumos sobre Git e GitHub do curso de Versionamento
 
 ## 💻 Resumos das Aulas
 
-| Aulas | Resumos|
-|-------|--------|
-|Gravando Alteraçãoes no Repositório local | [Resumos]()|
+|Nº| Aulas | Resumos|
+|--|-------|--------|
+|01|Visão Geral do Curso e Ferramentas| [Ver material](https://github.com/cortelucas/DIO/tree/main/bootcamps/microsoft-ai-for-tech-github-copilot/git-e-github/resumos/resumo-aula1.md)|
 
 ```sh
 git init
