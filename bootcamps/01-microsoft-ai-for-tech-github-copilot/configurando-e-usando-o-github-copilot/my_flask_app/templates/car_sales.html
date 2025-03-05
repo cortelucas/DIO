@@ -19,14 +19,20 @@
     h1 {
       margin-top: 20px;
     }
+    /* tabela arredondada */
     table {
       width: 80%;
       border-collapse: collapse;
       margin-top: 20px;
+      /*sem borda*/
+      border: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 20px rgba(5, 255, 47, 0.1);
     }
     th, td {
       padding: 10px;
-      border: 1px solid #ddd;
+      border: none;
       text-align: left;
     }
     th {
@@ -41,18 +47,61 @@
     }
     button {
       padding: 5px 10px;
-      background-color: #007bff;
-      color: white;
+      background-color: rgb(5, 255, 47);
+      color: black;
       border: none;
       cursor: pointer;
     }
     button:hover {
-      background-color: #0056b3;
+      background-color: rgb(5, 255, 47, 0.8);
+    }
+
+    /* Botão para trocar tema, flutuante no canto */
+    #theme {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      padding: 5px 10px;
+      background-color: rgb(5, 255, 47);
+      color: black;
+      border: none;
+      cursor: pointer;
+    }
+    #theme:hover {
+      background-color: rgb(5, 255, 47, 0.8);
+    }
+
+    /* White theme */
+    body.white {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    body.white table {
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    }
+    body.white th {
+      background-color: #f1f1f1;
+      color: black;
+    }
+    body.white tr:nth-child(even) {
+      background-color: #f1f1f1;
+    }
+    body.white tr:hover {
+      background-color: #e1e1e1;
+    }
+    body.white button {
+      background-color: rgb(0, 0, 0);
+      color: white;
+    }
+    body.white button:hover {
+      background-color: rgb(0, 0, 0, 0.8);
     }
   </style>
 </head>
 <body>
   <h1>Nome da Loja de Carros Usados</h1>
+  <!-- Botão para trocar tema -->
+  <button id="theme">Trocar Tema</button>
   <table>
     <thead>
       <tr>

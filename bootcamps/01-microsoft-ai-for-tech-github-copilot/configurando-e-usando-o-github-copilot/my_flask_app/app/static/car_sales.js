@@ -20,3 +20,8 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
+
+// Fazer o botão trocar tema funcionar
+document.getElementById('theme').addEventListener('click', function() {
+  document.body.classList.toggle('white');
+});
