@@ -1,4 +1,3 @@
-// src/ui/RaceDisplay.mjs
 const BLOCK_ICONS = {
 	RETA: "🛣️ ",
 	CURVA: "📐",
@@ -6,6 +5,25 @@ const BLOCK_ICONS = {
 };
 
 export class RaceDisplay {
+	renderRace(rounds, runnerOne, runnerTwo) {
+		const totalRounds = rounds.length;
+
+		for (const round of rounds) {
+			const { roundNumber, trackType, result } = round;
+
+			this.printRoundHeader(roundNumber, totalRounds);
+			this.printTrackType(trackType);
+
+			if (result.isConfrontation) {
+				this.printConfrontationHeader(runnerOne.NOME, runnerTwo.NOME);
+			}
+
+			this.#printRolls(trackType, runnerOne, runnerTwo, result);
+			this.printRoundOutcome(round);
+			this.printPartialScore(runnerOne, runnerTwo);
+		}
+	}
+
 	printRoundHeader(roundNumber, totalRounds) {
 		console.log(
 			`⚡ ==================== RODADA ${roundNumber}/${totalRounds} ==================== ⚡`,
@@ -41,29 +59,6 @@ export class RaceDisplay {
 		this.#printTrackOutcome(result);
 	}
 
-	#printConfrontationOutcome(result) {
-		const { winner, loser, pointDeducted } = result;
-
-		if (!winner) {
-			console.log(" 🤝 Confronto empatado! Ninguém perdeu pontos.");
-			return;
-		}
-
-		const outcome = pointDeducted ? "perdeu 1 ponto." : "já tinha 0 pontos.";
-		console.log(` 🥊 ${winner.NOME} venceu! ${loser.NOME} ${outcome}`);
-	}
-
-	#printTrackOutcome(result) {
-		const { winner } = result;
-
-		if (!winner) {
-			console.log(" 🤝 Empate na pista! Ninguém marcou pontos.");
-			return;
-		}
-
-		console.log(` ✨ ${winner.NOME} foi mais rápido e marcou 1 ponto!`);
-	}
-
 	printPartialScore(runnerOne, runnerTwo) {
 		console.log(
 			`\n Placar Parcial -> ${runnerOne.NOME}: ${runnerOne.PONTOS} | ${runnerTwo.NOME}: ${runnerTwo.PONTOS}`,
@@ -96,5 +91,33 @@ export class RaceDisplay {
 				`\n🤝 FIM DE PROVA: A corrida terminou em um empate emocionante!\n`,
 			);
 		}
+	}
+
+	#printRolls(trackType, runnerOne, runnerTwo, result) {
+		this.printRoll(runnerOne.NOME, trackType, result.rolls.runnerOne);
+		this.printRoll(runnerTwo.NOME, trackType, result.rolls.runnerTwo);
+	}
+
+	#printConfrontationOutcome(result) {
+		const { winner, loser, pointDeducted } = result;
+
+		if (!winner) {
+			console.log(" 🤝 Confronto empatado! Ninguém perdeu pontos.");
+			return;
+		}
+
+		const outcome = pointDeducted ? "perdeu 1 ponto." : "já tinha 0 pontos.";
+		console.log(` 🥊 ${winner.NOME} venceu! ${loser.NOME} ${outcome}`);
+	}
+
+	#printTrackOutcome(result) {
+		const { winner } = result;
+
+		if (!winner) {
+			console.log(" 🤝 Empate na pista! Ninguém marcou pontos.");
+			return;
+		}
+
+		console.log(` ✨ ${winner.NOME} foi mais rápido e marcou 1 ponto!`);
 	}
 }
