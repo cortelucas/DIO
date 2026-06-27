@@ -1,8 +1,8 @@
+import { TRACK_TYPES } from "../track/index.mjs";
 import {
 	ConfrontationTrackStrategy,
 	CurveTrackStrategy,
 	StraightTrackStrategy,
-	TRACK_TYPES,
 } from "./index.mjs";
 
 export function createTrackStrategyRegistry() {

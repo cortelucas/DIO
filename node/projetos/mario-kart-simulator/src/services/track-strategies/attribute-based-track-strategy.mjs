@@ -1,4 +1,4 @@
-import { TrackStrategy } from "./index.mjs";
+import { TrackStrategy } from "./track-strategy.mjs";
 
 export class AttributeBasedTrackStrategy extends TrackStrategy {
 	/** @param {"VELOCIDADE"|"MANOBRABILIDADE"} attributeName */
