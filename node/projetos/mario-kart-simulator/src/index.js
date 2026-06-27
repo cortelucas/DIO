@@ -1,16 +1,8 @@
 import { stdin as input, stdout as output } from "node:process";
 import { createInterface } from "node:readline/promises";
+import { getRunners } from "./data/index.mjs";
 
-import { Runner } from "./entities/index.mjs";
-
-const runners = [
-	new Runner("Mario", 4, 3, 3),
-	new Runner("Luigi", 3, 4, 4),
-	new Runner("Peach", 3, 4, 2),
-	new Runner("Yoshi", 2, 4, 3),
-	new Runner("Bowser", 5, 2, 5),
-	new Runner("Donkey Kong", 2, 2, 5),
-];
+const runners = getRunners();
 
 // menu
 async function menu() {
@@ -145,8 +137,7 @@ async function playRaceEngine(characterOne, characterTwo) {
 		);
 
 		const block = await getRandomBlock();
-		const blockIcon =
-			block === "RETA" ? "🛣️ " : block === "CURVA" ? "📐" : "⚔️ ";
+		const blockIcon = block === "RETA" ? "🛣️ " : block === "CURVA" ? "📐" : "⚔️ ";
 		console.log(` Bloco Atual: ${blockIcon} ${block}`);
 		console.log("----------------------------------------------------------");
 
@@ -300,11 +291,11 @@ async function declareWinner(characterOne, characterTwo) {
 	if (!runnerOne || !runnerTwo) return;
 
 	console.log("🚦 SINAL VERDE!");
-  // contagem regressiva 5 a 1
-  for (let i = 5; i > 0; i--) {
-    console.log(`🚦 ${i}`);
-    await new Promise((resolve) => setTimeout(resolve, 1000));
-  }
+	// contagem regressiva 5 a 1
+	for (let i = 5; i > 0; i--) {
+		console.log(`🚦 ${i}`);
+		await new Promise((resolve) => setTimeout(resolve, 1000));
+	}
 	console.log(`🏁 Corrida Iniciada: ${runnerOne.NOME} VS ${runnerTwo.NOME}\n`);
 
 	await playRaceEngine(runnerOne, runnerTwo);
