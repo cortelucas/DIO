@@ -1,1 +1,1 @@
-export { getRunners } from "./runnersRepository.mjs";
+export { getRunners } from "./runners-repository.mjs";

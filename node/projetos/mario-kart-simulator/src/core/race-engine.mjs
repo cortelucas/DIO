@@ -1,4 +1,3 @@
-// src/core/RaceEngine.mjs
 const TOTAL_ROUNDS = 5;
 
 export class RaceEngine {
@@ -23,7 +22,7 @@ export class RaceEngine {
 
 			const result = strategy.resolve(runnerOne, runnerTwo, this.diceRoller);
 
-			this.#applyScore(runnerOne, runnerTwo, result);
+			this.#applyScore(result);
 
 			rounds.push({
 				roundNumber,
@@ -36,12 +35,16 @@ export class RaceEngine {
 		return rounds;
 	}
 
-	#applyScore(runnerOne, runnerTwo, result) {
+	#applyScore(result) {
 		const { winner, loser, isConfrontation } = result;
 
 		if (isConfrontation) {
-			if (loser && loser.PONTOS > 0) {
-				loser.PONTOS--;
+			if (loser) {
+				const hadPoints = loser.PONTOS > 0;
+				if (hadPoints) {
+					loser.PONTOS--;
+				}
+				result.pointDeducted = hadPoints;
 			}
 			return;
 		}
