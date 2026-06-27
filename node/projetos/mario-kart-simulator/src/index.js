@@ -1,15 +1,7 @@
 import { stdin as input, stdout as output } from "node:process";
 import { createInterface } from "node:readline/promises";
 
-class Runner {
-	constructor(nome, velocidade, manobrabilidade, poder) {
-		this.NOME = nome;
-		this.VELOCIDADE = velocidade;
-		this.MANOBRABILIDADE = manobrabilidade;
-		this.PODER = poder;
-		this.PONTOS = 0;
-	}
-}
+import { Runner } from "./entities/index.mjs";
 
 const runners = [
 	new Runner("Mario", 4, 3, 3),
