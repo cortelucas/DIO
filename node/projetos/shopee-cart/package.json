@@ -1,0 +1,19 @@
+{
+  "name": "shopee-cart",
+  "version": "1.0.0",
+  "description": "Project clone Shopee Cart",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "clone",
+    "shopee",
+    "cart",
+    "nodejs",
+    "backend"
+  ],
+  "author": "cortelucas",
+  "license": "ISC",
+  "type": "module"
+}
