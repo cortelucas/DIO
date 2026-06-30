@@ -4,6 +4,15 @@ export class Cart {
 		return userCart;
 	}
 
+	async displayCart(userCart) {
+		console.log("\nShopee Cart List:");
+		return userCart.forEach((item, index) => {
+			console.log(
+				`${index + 1}: ${item.name} - R$ ${item.price.toFixed(2)} | ${item.quantity}x | Subtotal: R$ ${item.subtotal()}`,
+			);
+		});
+	}
+
 	async removeItem(userCart, index) {}
 
 	async deleteItem(userCart, name) {
@@ -16,6 +25,6 @@ export class Cart {
 
 	async calculateTotal(userCart) {
 		const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
-		return `R$ ${result.toFixed(2)}`;
+		return `💸 Total: R$ ${result.toFixed(2)}`;
 	}
 }

@@ -4,17 +4,6 @@ import { Item } from "./services/item.js";
 const myCart = [];
 const myWhishlist = [];
 
-async function showMyCart(cart) {
-    return cart.map((item) => {
-        return {
-            name: item.name,
-            price: item.price,
-            quantity: item.quantity,
-            subtotal: item.subtotal(),
-        };
-    });
-}
-
 console.log("Welcome to the your Shopee Cart");
 
 const cartInstance = new Cart();
@@ -35,8 +24,10 @@ await cartInstance.addItem(myWhishlist, hotwheelsLamborghini);
 await cartInstance.addItem(myWhishlist, hotwheelsPorsche);
 
 console.log(`Your whishlist contens: ${myWhishlist.length} items`);
-console.log(await showMyCart(myWhishlist));
+console.log(await cartInstance.displayCart(myWhishlist));
 
 await cartInstance.deleteItem(myWhishlist, hotwheelsLamborghini.name);
-console.log(`Your whishlist contens: ${myWhishlist.length} items. Removed: ${hotwheelsLamborghini.name}`);
-console.log(await showMyCart(myWhishlist));
+console.log(
+	`Your whishlist contens: ${myWhishlist.length} items. Removed: ${hotwheelsLamborghini.name}`,
+);
+console.log(await cartInstance.displayCart(myWhishlist));
