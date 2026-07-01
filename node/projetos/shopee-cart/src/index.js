@@ -24,10 +24,10 @@ await cartInstance.addItem(myWhishlist, hotwheelsLamborghini);
 await cartInstance.addItem(myWhishlist, hotwheelsPorsche);
 
 console.log(`Your whishlist contens: ${myWhishlist.length} items`);
-console.log(await cartInstance.displayCart(myWhishlist));
+await cartInstance.displayCart(myWhishlist);
 
 await cartInstance.deleteItem(myWhishlist, hotwheelsLamborghini.name);
 console.log(
 	`Your whishlist contens: ${myWhishlist.length} items. Removed: ${hotwheelsLamborghini.name}`,
 );
-console.log(await cartInstance.displayCart(myWhishlist));
+await cartInstance.displayCart(myWhishlist);

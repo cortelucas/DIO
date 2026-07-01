@@ -17,7 +17,7 @@ export class Cart {
 	 */
 	async displayCart(userCart) {
 		console.log("\nShopee Cart List:");
-		return userCart.forEach((item, index) => {
+		userCart.forEach((item, index) => {
 			console.log(
 				`${index + 1}: ${item.name} - R$ ${item.price.toFixed(2)} | ${item.quantity}x | Subtotal: R$ ${item.subtotal()}`,
 			);
