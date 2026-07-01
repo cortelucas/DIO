@@ -1,9 +1,20 @@
 export class Cart {
+	/**
+	 *
+	 * @param {Array<Cart>} userCart
+	 * @param {Object} item
+	 * @returns {Array}
+	 */
 	async addItem(userCart, item) {
 		userCart.push(item);
 		return userCart;
 	}
 
+	/**
+	 *
+	 * @param {Array<Cart>} userCart
+	 *  @returns {Array}
+	 */
 	async displayCart(userCart) {
 		console.log("\nShopee Cart List:");
 		return userCart.forEach((item, index) => {
@@ -15,6 +26,12 @@ export class Cart {
 
 	async removeItem(userCart, index) {}
 
+	/**
+	 *
+	 * @param {Array<Cart>} userCart
+	 * @param {String} name
+	 * @returns {Array}
+	 */
 	async deleteItem(userCart, name) {
 		const index = userCart.findIndex((item) => item.name === name);
 		if (index !== -1) {
@@ -23,6 +40,11 @@ export class Cart {
 		return userCart;
 	}
 
+	/**
+	 *
+	 * @param {Array<Cart>} userCart
+	 * @returns {String}
+	 */
 	async calculateTotal(userCart) {
 		const result = userCart.reduce((total, item) => total + item.subtotal(), 0);
 		return `💸 Total: R$ ${result.toFixed(2)}`;
